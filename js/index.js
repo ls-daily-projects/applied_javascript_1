@@ -52,6 +52,13 @@ Element.prototype.$qsa = function(...args) {
 Element.prototype.$qs = function(...args) {
     return this.querySelector.call(this, args)
 }
+const $createLink = linkText => {
+    const $el = document.createElement("a")
+    $el.setAttribute("href", "#")
+    $el.textContent = linkText
+    $el.style.color = "green"
+    return $el
+}
 
 // Text Data
 const { nav, cta, mainContent, contact, footer } = siteContent
@@ -70,6 +77,8 @@ $header.$qsa("nav a").forEach(($link, i) => {
     $link.textContent = nav[`nav-item-${i + 1}`]
     $link.style.color = "green"
 })
+$header.$qs("nav").prepend($createLink("First Link"))
+$header.$qs("nav").appendChild($createLink("Last Link"))
 $header.$qs("img").setAttribute("src", nav["img-src"])
 
 // CTA
