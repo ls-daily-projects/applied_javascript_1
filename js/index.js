@@ -66,9 +66,10 @@ const $footer = $qs(".container footer")
 const $textContents = $mainContent.$qsa(".text-content")
 
 // Header
-$header
-    .$qsa("nav a")
-    .forEach(($link, i) => ($link.textContent = nav[`nav-item-${i + 1}`]))
+$header.$qsa("nav a").forEach(($link, i) => {
+    $link.textContent = nav[`nav-item-${i + 1}`]
+    $link.style.color = "green"
+})
 $header.$qs("img").setAttribute("src", nav["img-src"])
 
 // CTA
